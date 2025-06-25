@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-b from-dark to-dark-100 text-gray-100 min-h-screen;
+    background-attachment: fixed;
+  }
+
+  select {
+    @apply appearance-none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
+
+  select option {
+    @apply bg-dark-100 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-400 rounded-full hover:bg-dark-500 transition-colors;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-glass backdrop-blur-xl border border-dark-300/50 shadow-glass;
+  }
+
+  .glass-panel-hover {
+    @apply hover:bg-glass-hover hover:shadow-glass-hover transition-all duration-300;
+  }
+
+  .premium-button {
+    @apply bg-accent text-white px-4 py-2 rounded-lg 
+           shadow-inner-light backdrop-blur-sm
+           hover:bg-accent-dark transition-all duration-300
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .premium-button-outline {
+    @apply border border-accent/30 text-accent px-4 py-2 rounded-lg
+           hover:bg-accent/10 transition-all duration-300;
+  }
+  
+  .text-shadow-glow {
+    text-shadow: 0 0 5px rgba(0, 122, 255, 0.3), 0 0 10px rgba(0, 122, 255, 0.2);
+  }
+  
+  .box-shadow-glow {
+    box-shadow: 0 0 10px rgba(0, 122, 255, 0.2), 0 0 20px rgba(0, 122, 255, 0.1);
+  }
+
+  /* Navbar specific styles */
+  .navbar-promo {
+    @apply flex items-center justify-center px-4 py-1.5 rounded-lg border transition-all duration-300;
+    width: 100%;
+    max-width: 36rem;
+  }
+
+  .navbar-promo-lifetime {
+    @apply bg-gradient-to-r from-red-500/10 to-red-600/5 border-red-500/20;
+  }
+
+  .navbar-promo-referral {
+    @apply bg-gradient-to-r from-emerald-500/10 to-emerald-600/5 border-emerald-500/20;
+  }
+}
+
+/* Animations */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes float-fast {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes gradient-x {
+  0%, 100% { background-size: 200% 100%; background-position: left center; }
+  50% { background-size: 200% 100%; background-position: right center; }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 5s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-fast 4s ease-in-out infinite;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 15s ease infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.5s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.animate-on-scroll {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0, 1);
+  transform: translateY(20px);
+}
+
+.animate-on-scroll.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Text rotation animation */
+.text-rotate-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.text-rotate-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.text-rotate-exit {
+  opacity: 1;
+}
+
+.text-rotate-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 500ms, transform 500ms;
+}
